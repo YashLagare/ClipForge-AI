@@ -1,9 +1,9 @@
-import { Check } from 'lucide-react';
-import { PrimaryButton, GhostButton } from './Buttons';
-import Title from './Title';
-import { plansData } from '../assets/dummy-data';
 import { motion } from 'framer-motion';
+import { Check } from 'lucide-react';
 import { useRef } from 'react';
+import { plansData } from '../data/data';
+import { GhostButton, PrimaryButton } from './Buttons';
+import Title from './Title';
 
 export default function Pricing() {
     const refs = useRef<(HTMLDivElement | null)[]>([]);

@@ -1,8 +1,8 @@
-import { ChevronDownIcon } from 'lucide-react';
-import Title from './Title';
-import { faqData } from '../assets/dummy-data';
-import { useRef } from 'react';
 import { motion } from 'framer-motion';
+import { ChevronDownIcon } from 'lucide-react';
+import { useRef } from 'react';
+import { faqData } from '../data/data';
+import Title from './Title';
 
 export default function Faq() {
     const refs = useRef<(HTMLDetailsElement | null)[]>([]);
@@ -13,7 +13,7 @@ export default function Faq() {
                 <Title
                     title="FAQ"
                     heading="Frequently asked questions"
-                    description="Everything you need to know about working with our agency. If you have more questions, feel free to reach out."
+                    description="Quick answers to common questions about ClipForge AI, pricing, and how the platform works."
                 />
 
                 <div className="space-y-3">
