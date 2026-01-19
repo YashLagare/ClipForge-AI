@@ -1,7 +1,7 @@
-import { useRef } from 'react';
-import { featuresData } from '../assets/dummy-data';
-import Title from './Title';
 import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { featuresData } from '../data/data';
+import Title from './Title';
 
 export default function Features() {
     const refs = useRef<(HTMLDivElement | null)[]>([]);

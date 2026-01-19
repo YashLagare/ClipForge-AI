@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { footerLinks } from '../assets/dummy-data';
+import { footerLinks } from '../data/data';
 
 export default function Footer() {
 
@@ -50,7 +50,7 @@ export default function Footer() {
                 <p className="py-4 text-center text-sm text-gray-400">
                     © {new Date().getFullYear()} {' '}
                     <a href="https://www.instagram.com/yashlagare/?hl=en ">
-                        Clipforge
+                        Clipforge AI
                     </a>
                     . All rights reserved.
                 </p>
