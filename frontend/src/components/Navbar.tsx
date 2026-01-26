@@ -10,6 +10,7 @@ export default function Navbar() {
     const navLinks = [
         { name: 'Home', href: '/#' },
         { name: 'Create', href: '/generate' },
+        { name: 'My-generated ads', href: '/my-generation' },
         { name: 'Community', href: '/community' },
         { name: 'Plans', href: '/plans' },
     ];

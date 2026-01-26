@@ -1,3 +1,4 @@
+
 import { UploadIcon, VideoIcon, ZapIcon } from 'lucide-react';
 
 export const featuresData = [
@@ -147,6 +148,7 @@ export const footerLinks = [
         links: [
             { name: "Home", url: "/" },
             { name: "Create", url: "/generate" },
+            { name: 'My-generated ads', url: '/my-generation' },
             { name: "Community", url: "/community" },
             { name: "Plans", url: "/plans" }
         ]
@@ -161,7 +163,7 @@ export const footerLinks = [
     {
         title: "Connect",
         links: [
-            { name: " Portfolio", target: "_blank", url: "https://yashlagare.github.io/MyPortfolio/" },
+            { name: " Portfolio", target: "_blank", url: "https://yashlagare.github.io/yash-lagare-portfolio/" },
             { name: "Instagram", target: "_blank", url: "https://www.instagram.com/yashlagare/?hl=en" },
             { name: "LinkedIn", target: "_blank", url: "https://www.linkedin.com/in/yash-lagare-814b37299" },
             { name: "GitHub", target: "_blank", url: "https://github.com/YashLagare" }
