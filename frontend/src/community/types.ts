@@ -1,4 +1,4 @@
-import type { project } from '../../types/Community';
+import type { project } from '../types/Community';
 
 /**
  * Extended project type with community-specific stats and metadata
@@ -27,7 +27,6 @@ export interface Category {
   id: string;
   label: string;
   icon: string | React.ReactNode;
-  count: number;
 }
 
 /**

@@ -1,5 +1,5 @@
 import { Search } from 'lucide-react';
-import { GhostButton } from '../Buttons';
+import { GhostButton } from '../components/Buttons';
 import type { EmptyStateProps } from './types';
 
 export const EmptyState = ({ onClearFilters }: EmptyStateProps) => {

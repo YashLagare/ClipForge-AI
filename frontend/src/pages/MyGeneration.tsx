@@ -141,7 +141,7 @@ const MyGeneration = () => {
           transition={{ duration: 0.5 }}
           className="mb-8 md:mb-12"
         >
-          <div className="text-center mb-8">
+          <div className="text-center mt-8 mb-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6">
               <Sparkles className="size-4 text-yellow-400" />
               <span className="text-sm font-medium">My AI Creations</span>

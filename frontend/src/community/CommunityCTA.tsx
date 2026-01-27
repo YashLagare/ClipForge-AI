@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { MessageCircle, Sparkles, Users } from 'lucide-react';
-import { GhostButton, PrimaryButton } from '../Buttons';
+import { GhostButton, PrimaryButton } from '../components/Buttons';
 import type { CommunityCTAProps } from './types';
 
 export const CommunityCTA = ({ 

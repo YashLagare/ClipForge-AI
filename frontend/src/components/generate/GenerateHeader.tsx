@@ -10,7 +10,7 @@ export const GenerateHeader = ({ isLoading }: GenerateHeaderProps) => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-900/20 border border-indigo-500/20 mb-4 md:mb-6">
+      <div className="inline-flex items-center gap-2 px-4 py-2 mt-6 rounded-full bg-indigo-900/20 border border-indigo-500/20 mb-4 md:mb-6">
         <Sparkles className="size-4" />
         <span className="text-sm font-medium">AI-Powered Creation</span>
       </div>

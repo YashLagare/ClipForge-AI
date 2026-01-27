@@ -71,3 +71,21 @@ export interface StyleOption {
   name: string;
   color: string;
 }
+
+// Update the StyleOption interface if you want to include icons
+export interface StyleOption {
+  name: string;
+  color: string;
+  icon?: string; // Optional, if you want to keep backward compatibility
+}
+
+export interface AIInstructionsCardProps {
+  prompt: string;
+  style: string;
+  onPromptChange: (value: string) => void;
+  onStyleSelect: (style: string) => void;
+  onRandomPrompt: () => void;
+  isDisabled?: boolean;
+  isInspireCooldown?: boolean;  // Add this
+  cooldownSeconds?: number;     // Add this
+}

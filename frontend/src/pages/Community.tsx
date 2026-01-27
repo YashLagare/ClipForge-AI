@@ -2,23 +2,23 @@ import { motion } from "framer-motion";
 import { Loader2Icon, Sparkles } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { dummyGenerations } from "../assets/assets";
-import type { CommunityProject, SortOption, ViewMode } from "../components/community";
+import type { CommunityProject, SortOption, ViewMode } from "../community";
 import {
   CommunityCTA,
   CommunityFilters,
   CommunityHero,
   CommunityStats,
   ProjectGrid,
-} from "../components/community";
+} from "../community";
 
 const CATEGORIES = [
-  { id: "all", label: "All Ads", icon: "🎯", count: 0 },
-  { id: "fashion", label: "Fashion", icon: "👗", count: 12 },
-  { id: "tech", label: "Tech", icon: "💻", count: 8 },
-  { id: "beauty", label: "Beauty", icon: "💄", count: 15 },
-  { id: "food", label: "Food & Bev", icon: "🍔", count: 7 },
-  { id: "fitness", label: "Fitness", icon: "💪", count: 9 },
-  { id: "travel", label: "Travel", icon: "✈️", count: 5 },
+  { id: "all", label: "All Ads", icon: "🎯"},
+  { id: "fashion", label: "Fashion", icon: "👗"},
+  { id: "tech", label: "Tech", icon: "💻"},
+  { id: "beauty", label: "Beauty", icon: "💄"},
+  { id: "food", label: "Food & Bev", icon: "🍔"},
+  { id: "fitness", label: "Fitness", icon: "💪"},
+  { id: "travel", label: "Travel", icon: "✈️"},
 ];
 
 const Community = () => {
