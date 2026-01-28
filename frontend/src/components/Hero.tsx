@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, Play, Zap } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { GhostButton, PrimaryButton } from './Buttons';
 import Floating3DCards from './Floating3DCards';
 
 export default function Hero() {
+
+    const navigate = useNavigate();
 
     const trustedUserImages = [
         '/trcusteduser1.jpeg',
@@ -85,12 +87,17 @@ export default function Hero() {
                                     </PrimaryButton>
                                 </Link>
 
-                                <Link to="/community">
+                                <GhostButton className="max-sm:w-full max-sm:justify-center py-3 px-5"  onClick={() => navigate('/community')}>
+                                    <Play className="size-4" />
+                                    Watch demo
+                                </GhostButton>
+
+                                {/* <Link to="/community">
                                     <GhostButton className="max-sm:w-full max-sm:justify-center py-3 px-5">
                                         <Play className="size-4" />
                                         Watch demo
                                     </GhostButton>
-                                </Link>
+                                </Link> */}
 
                             </motion.div>
 
