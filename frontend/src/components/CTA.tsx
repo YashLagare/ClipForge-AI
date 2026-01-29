@@ -25,18 +25,18 @@ export default function CTA() {
                             viewport={{ once: true }}
                             transition={{ type: "spring", stiffness: 250, damping: 70, mass: 1, delay: 0.2 }}
                         >
-                           Generate scroll-stopping ad creatives, headlines, and short videos using AI — no design skills, no long production cycles.
+                            Generate scroll-stopping ad creatives, headlines, and short videos using AI — no design skills, no long production cycles.
                         </motion.p>
                         <motion.div
                             initial={{ y: 60, opacity: 0 }}
                             whileInView={{ y: 0, opacity: 1 }}
                             viewport={{ once: true }}
                             transition={{ type: "spring", stiffness: 250, damping: 70, mass: 1, delay: 0.3 }}
-                        >   
-                        <GhostButton className="px-8 py-3 gap-2" onClick={() => navigate('/generate') }>
+                        >
+                            <GhostButton className="px-8 py-3 gap-2" onClick={() => navigate('/generate')}>
                                 Generate ads now <ArrowRightIcon size={20} />
                             </GhostButton>
-                        </motion.div>   
+                        </motion.div>
                     </div>
                 </div>
             </div>
