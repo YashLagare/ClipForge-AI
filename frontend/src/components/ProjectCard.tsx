@@ -730,13 +730,13 @@ const ProjectCard = ({
         const shareUrl = gen.generatedImage || gen.generatedVideo;
         const shareTitle = gen.productName;
         const shareText = gen.productDescription || "Check out this project!";
-        
+
         if (navigator.share) {
             try {
                 await navigator.share({
                     title: shareTitle,
                     text: shareText,
-                    url: shareUrl,
+                    url: shareUrl!,
                 });
             } catch (error) {
                 // User cancelled or error occurred
@@ -745,7 +745,7 @@ const ProjectCard = ({
         } else {
             // Fallback for desktop: copy to clipboard
             try {
-                await navigator.clipboard.writeText(shareUrl);
+                await navigator.clipboard.writeText(shareUrl!);
                 swalDarkTheme.fire({
                     icon: "success",
                     iconColor: "#10b981",
@@ -764,7 +764,7 @@ const ProjectCard = ({
                         <div class="text-left">
                             <p class="text-gray-300 mb-2">Copy this link to share:</p>
                             <div class="p-2 bg-white/5 rounded border border-white/10 overflow-x-auto">
-                                <code class="text-sm text-gray-200">${shareUrl}</code>
+                                <code class="text-sm text-gray-200">${shareUrl!}</code>
                             </div>
                         </div>
                     `,
@@ -772,7 +772,7 @@ const ProjectCard = ({
                 });
             }
         }
-        
+
         setMenuOpen(false);
     };
 
