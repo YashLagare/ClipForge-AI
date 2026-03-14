@@ -161,7 +161,7 @@ export const footerLinks = [
     {
         title: "Connect",
         links: [
-            { name: " Portfolio", target: "_blank", url: "https://yashlagare.github.io/MyPortfolio/" },
+            { name: " Portfolio", target: "_blank", url: "https://portfolio-five-opal-53.vercel.app/" },
             { name: "Instagram", target: "_blank", url: "https://www.instagram.com/yashlagare/?hl=en" },
             { name: "LinkedIn", target: "_blank", url: "https://www.linkedin.com/in/yash-lagare-814b37299" },
             { name: "GitHub", target: "_blank", url: "https://github.com/YashLagare" }
