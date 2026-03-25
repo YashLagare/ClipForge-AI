@@ -22,14 +22,12 @@ const loadImage = (path: string, mimeType: string) => {
 export const createProject = async (req: Request, res: Response) => {
 
     let teamProjectId: string;
-    const { userId } = req.body;
+    const { userId } = req.auth();
     let isCreditDeducted = false;
 
-const { name = 'New Project', userPrompt, productName, productDescription, targetLength = 5 } = req.body;
-    const aspectRatioRaw = req.body.aspectRatio;
-    const aspectRatio = Array.isArray(aspectRatioRaw) 
-      ? (aspectRatioRaw[0] as string || '9:16') 
-      : (aspectRatioRaw as string || '9:16');
+    const { name = 'New Project', userPrompt, productName, productDescription, targetLength = 5 } = req.body;
+    const aspectRatioRaw = Array.isArray(req.body.aspectRatio) ? req.body.aspectRatio[0] : req.body.aspectRatio;
+    const aspectRatio = aspectRatioRaw || '9:16';
 
     const images: any = req.files;
 
@@ -70,7 +68,7 @@ const { name = 'New Project', userPrompt, productName, productDescription, targe
                 productDescription,
                 userPrompt,
                 aspectRatio: aspectRatio,
-targetLength: parseInt(targetLength as string),
+                targetLength: parseInt(targetLength as string),
                 uploadedImages,
                 isGenerating: true
             }
@@ -231,7 +229,7 @@ export const createVideo = async (req: Request, res: Response) => {
             data: { isGenerating: true }
         })
 
-        const prompt = `make the person showcase the product which is ${project.productName} ${project.productDescription && `and Product Description: ${project.productDescription}`}`
+        const prompt = `make the person showcase the product which is ${project.productName} ${project.productDescription && "and Product Description: " + project.productDescription}`
 
         const model = 'veo-3.1-generate-preview'
 
@@ -352,6 +350,7 @@ export const deleteProject = async (req: Request, res: Response) => {
         await prisma.project.delete({
             where: {id: projectId, userId}
         })
+        res.json({ message: 'Project deleted successfully' });
 
     } catch (error: any) {
         Sentry.captureException(error);

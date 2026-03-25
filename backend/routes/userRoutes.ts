@@ -7,6 +7,6 @@ const userRouter = express.Router();
 userRouter.get('/credits', protect, getUserCredits)
 userRouter.get('/projects', protect, getAllProjects)
 userRouter.get('/projects/:projectId', protect, getProjectById)
-userRouter.get('/publish/:projectId', protect, toggleProjectPublish)
+userRouter.patch('/publish/:projectId', protect, toggleProjectPublish)
 
 export default userRouter;
