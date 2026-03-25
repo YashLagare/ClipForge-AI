@@ -49,7 +49,7 @@ export default function Footer() {
 
                 <p className="py-4 text-center text-sm text-gray-400">
                     © {new Date().getFullYear()} {' '}
-                    <a href="https://www.instagram.com/yashlagare/?hl=en ">
+                    <a href="https://portfolio-five-opal-53.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
                         Clipforge AI
                     </a>
                     . All rights reserved.

@@ -1,8 +1,10 @@
-import { useClerk, UserButton, useUser } from '@clerk/clerk-react';
+import { useAuth, useClerk, UserButton, useUser } from '@clerk/clerk-react';
 import { motion } from 'framer-motion';
 import { DollarSignIcon, FolderEditIcon, GalleryHorizontalEnd, MenuIcon, SparkleIcon, XIcon } from 'lucide-react';
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import api from '../config/axios';
 import { GhostButton, PrimaryButton } from './Buttons';
 
 export default function Navbar() {
@@ -13,12 +15,39 @@ export default function Navbar() {
 
     const [isOpen, setIsOpen] = useState(false);
 
+    const [credits, setCredits] = useState(0);
+    const { pathname } = useLocation();
+    const { getToken } = useAuth()
+
     const navLinks = [
         { name: 'Home', href: '/#' },
         { name: 'Create', href: '/generate' },
         { name: 'Community', href: '/community' },
         { name: 'Plans', href: '/plans' },
     ];
+
+    const getUserCredits = async () => {
+        try {
+            const token = await getToken()
+            const { data } = await api.get('/api/user/credits', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            setCredits(data.credits)
+        } catch (error: any) {
+            toast.error(error?.response?.data?.message || error.message)
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        if (user) {
+            (async () => {
+                await getUserCredits()
+            })();
+        }
+    }, [user, pathname])
 
     return (
         <motion.nav className='fixed top-5 left-0 right-0 z-50 px-4'
@@ -52,7 +81,7 @@ export default function Navbar() {
                 ) : (
                     <div className='flex gap-2'>
                         <GhostButton onClick={() => navigate("/plans")} className='border-none text-gray-300 sm:py-1.5'>
-                            Credits:
+                            Credits: {credits}
                         </GhostButton>
 
                         <UserButton>
@@ -90,7 +119,7 @@ export default function Navbar() {
                 <button onClick={() => { setIsOpen(false); openSignIn() }} className='font-medium text-gray-300 hover:text-white transition'>
                     Sign in
                 </button>
-                <PrimaryButton onClick={() => {setIsOpen(false); openSignUp()}}>Get Started</PrimaryButton>
+                <PrimaryButton onClick={() => { setIsOpen(false); openSignUp() }}>Get Started</PrimaryButton>
 
                 <button
                     onClick={() => setIsOpen(false)}

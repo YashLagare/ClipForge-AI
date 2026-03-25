@@ -1,10 +1,18 @@
+import { useAuth, useUser } from "@clerk/clerk-react";
 import { LoaderIcon, RectangleHorizontalIcon, RectangleVerticalIcon, Wand2Icon } from "lucide-react";
 import { useState } from "react";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { PrimaryButton } from "../components/Buttons";
 import Title from "../components/Title";
 import UploadZone from "../components/UploadZone";
+import api from "../config/axios";
 
 const Generate = () => {
+
+  const { user } = useUser()
+  const { getToken } = useAuth()
+  const navigate = useNavigate()
 
   const [name, setName] = useState('');
   const [productImage, setProductImage] = useState<File | null>(null);
@@ -25,8 +33,42 @@ const Generate = () => {
     }
   }
 
-  const handleGenerate = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleGenerate = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!user) toast.error('Pls login to generate😁')
+
+    if (!productImage || !modelImage || !name || !productName || !aspectRatio || !userPrompt) {
+      return toast.error('Pls fill all fields😅')
+    }
+
+    try {
+      setIsGenerating(true);
+      const formData = new FormData();
+
+      formData.append('images', productImage);
+      formData.append('name', name);
+      formData.append('productDescription', productDescription);
+      formData.append('productName', productName);
+      formData.append('aspectRatio', aspectRatio);
+      formData.append('images', modelImage);
+      formData.append('userPrompt', userPrompt);
+
+      const token = await getToken()
+
+      const { data } = await api.post('/api/project/create', formData, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+      toast.success('data.message')
+      navigate(`/result/` + data.projectId)
+
+    } catch (error) {
+      setIsGenerating(false)
+      toast.error('Error generating image😅')
+    }
+
   }
 
   return (
@@ -106,7 +148,7 @@ const Generate = () => {
                 </div>
               ) : (
                 <>
-                  <Wand2Icon className="size-5"/>Generate Image
+                  <Wand2Icon className="size-5" />Generate Image
                 </>
               )
             }

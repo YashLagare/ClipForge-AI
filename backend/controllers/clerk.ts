@@ -34,12 +34,13 @@ const clerkWebhooks = async (req: Request, res: Response) => {
                 
                 //console.log("Creating user with:", { id: data.id, email, name });
                 
-                await prisma.user.create({
+await prisma.user.create({
                     data: {
                         id: data.id,
                         email: email,
                         name: name,
                         image: data.image_url,
+                        credits: 20,
                     }
                 })
                 break;
@@ -93,7 +94,7 @@ const clerkWebhooks = async (req: Request, res: Response) => {
                             id: clerkUserId
                         },
                         data: {
-                            credits: credits[planId]
+                            credits: { increment: credits[planId] }
                         }
                     })
                 }
@@ -107,9 +108,9 @@ const clerkWebhooks = async (req: Request, res: Response) => {
         res.status(200).json({ message: "Webhook received : " + type })
     } catch (error: any) {
         Sentry.captureException(error)
-        // console.error("=== WEBHOOK ERROR ===");
-        // console.error("Error message:", error.message);
-        // console.error("Error stack:", error.stack);
+        console.error("=== WEBHOOK ERROR ===");
+        console.error("Error message:", error.message);
+        console.error("Error stack:", error.stack);
         res.status(500).json({ message: error.message });
     }
 }

@@ -8,7 +8,17 @@ declare global {
             plan: string;
             file: any;
         }
+        interface CreateProjectBody {
+            name?: string;
+            aspectRatio?: string;
+            userPrompt?: string;
+            productName: string;
+            productDescription?: string;
+            targetLength?: string;
+            userId: string;
+        }
     }
 }
 
 export { };
+
